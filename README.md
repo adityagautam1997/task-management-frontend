@@ -1,70 +1,76 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2 align="center">Task Management App</h2>
 
-## Available Scripts
+<h3>Backend Setup (NestJS)</h3>
 
-In the project directory, you can run:
+<h4>Prerequisites</h4>
+<ul>
+  <li>Node.js: Ensure you have Node.js installed. You can download it from <a href="https://nodejs.org/" target="_blank">here</a>.</li>
+  <li>MS SQL Server: A running instance of MS SQL Server.</li>
+  <li>Git: To clone the project from the repository using Git.</li>
+</ul>
 
-### `npm start`
+<h4>Getting Started</h4>
+<ol>
+  <li><strong>Clone the Repository</strong>
+    <pre><code>git clone &lt;backend-repo-url&gt;
+cd task-management-backend</code></pre>
+  </li>
+  <li><strong>Install Dependencies</strong>
+    <pre><code>npm install</code></pre>
+  </li>
+  <li><strong>Database Setup</strong>
+    <ul>
+      <li>Ensure your MS SQL Server is running.</li>
+      <li>Create a database for the app.</li>
+    </ul>
+    <pre><code>CREATE DATABASE TaskManagmentDB;
+    CREATE TABLE Tasks (
+  id INT PRIMARY KEY IDENTITY(1,1),
+  description NVARCHAR(255) NOT NULL,
+  created_at DATETIME DEFAULT GETDATE()
+);</code></pre>
+  </li>
+  <li><strong>Configure the Environment</strong>
+    <p>Create a <code>.env</code> file in the root of the <code>task-management-backend</code> folder with the following content:</p>
+    <pre><code>DB_HOST=localhost
+DB_PORT=1433
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+DB_DATABASE=TaskManagmentDB</code></pre>
+  </li>
+  <li><strong>Run the Application</strong>
+    <pre><code>npm run start:dev</code></pre>
+  </li>
+</ol>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<h3>Frontend Setup (React)</h3>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<h4>Getting Started</h4>
+<ol>
+  <li><strong>Clone the Repository</strong>
+    <pre><code>git clone &lt;frontend-repo-url&gt;
+cd task-management-frontend</code></pre>
+  </li>
+  <li><strong>Install Dependencies</strong>
+    <pre><code>npm install</code></pre>
+  </li>
+  <li><strong>Run the Application</strong>
+    <pre><code>npm start</code></pre>
+    <p>This will run the app at <code>http://localhost:3001</code>.</p>
+  </li>
+</ol>
 
-### `npm test`
+<h4>Running Both Applications</h4>
+<ol>
+  <li>Start Backend: <code>npm run start:dev</code> in the <code>task-management-backend</code> folder.</li>
+  <li>Start Frontend: <code>npm start</code> in the <code>task-management-frontend</code> folder.</li>
+  <li>Access the frontend at <code>http://localhost:3001</code>, and the frontend will interact with the backend to manage tasks.</li>
+</ol>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<h3>API Endpoints</h3>
+<ul>
+  <li><strong>GET</strong> <code>/tasks</code>: Fetch all tasks.</li>
+  <li><strong>POST</strong> <code>/tasks</code>: Add a new task. (Send JSON with <code>description</code>).</li>
+  <li><strong>DELETE</strong> <code>/tasks/:id</code>: Remove a task by ID.</li>
+</ul>
